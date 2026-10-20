@@ -15,3 +15,161 @@
 .footer{display:flex;justify-content:space-between;gap:12px;margin-top:26px;color:#8e8676;font-size:10px}.footer-heart{color:var(--gold)}.toast{position:fixed;right:25px;bottom:25px;z-index:20;max-width:min(360px,calc(100vw - 40px));padding:12px 16px;border:1px solid #68532c;border-radius:12px;background:#252015;color:#fff1ce;box-shadow:0 10px 30px #0005;font-size:12px;opacity:0;transform:translateY(8px);pointer-events:none;transition:all .2s}.toast.show{opacity:1;transform:translateY(0)}
 @media(max-width:1050px){.main-content{padding-inline:25px}.sidebar{padding-inline:18px}.content-grid{grid-template-columns:1fr}.notes-panel{order:2}.tasks-panel{order:1}}
 @media(max-width:700px){.app-shell{grid-template-columns:1fr}.sidebar{position:static;height:auto;padding:14px 18px;border-right:0;border-bottom:1px solid var(--line)}.brand{font-size:18px}.brand-mark{width:37px;height:37px}.side-label,.sidebar-bottom{display:none}.side-nav{display:flex;gap:5px;margin-top:12px;overflow-x:auto}.nav-item{flex:0 0 auto;padding:8px 10px;font-size:11px}.nav-item span{font-size:15px;width:auto}.main-content{padding:0 15px 22px}.topbar{height:57px}.welcome{padding:27px 0 20px;align-items:flex-start;flex-direction:column}.welcome h1{font-size:32px}.today-card{min-width:0;width:100%}.stats-grid{grid-template-columns:1fr;gap:9px}.stat-card{padding:14px 16px}.stat-value{margin:5px 0}.stat-value strong{font-size:25px}.stat-top{font-size:12px}.content-grid{margin-top:12px;gap:12px}.panel{padding:17px}.panel h2{font-size:19px}.goals-panel{margin-top:12px}.goal-form{flex-direction:column}.goal-form .button{width:100%}.footer{flex-direction:column;text-align:center;margin-top:20px}.quiet-button{font-size:10px}}
+
+/* ========================================
+   CURIOSITY — PREMIUM GOLD ANIMATIONS
+   Add this block at the END of style.css
+======================================== */
+
+:root {
+  --gold-glow: rgba(226, 181, 91, 0.22);
+  --gold-glow-strong: rgba(226, 181, 91, 0.38);
+}
+
+/* Smooth scrolling and polished interactions */
+html {
+  scroll-behavior: smooth;
+}
+
+button,
+a,
+.stat-card,
+.panel,
+.today-card,
+.task-row,
+.note-card,
+.goal-item,
+.goal-row {
+  transition:
+    transform 220ms ease,
+    box-shadow 260ms ease,
+    border-color 260ms ease,
+    background-color 260ms ease,
+    color 220ms ease;
+}
+
+/* Gentle golden glow on dashboard cards */
+.stat-card,
+.panel,
+.today-card {
+  position: relative;
+  isolation: isolate;
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease,
+    border-color 260ms ease;
+}
+
+.stat-card:hover,
+.panel:hover,
+.today-card:hover {
+  border-color: rgba(226, 181, 91, 0.48);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.22),
+    0 0 22px var(--gold-glow);
+}
+
+.stat-card:hover,
+.today-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Gold shimmer for the main heading */
+.welcome h1 > span:first-of-type {
+  background: linear-gradient(
+    110deg,
+    #c99b43,
+    #ffe6a3,
+    #d3a84f,
+    #fff0bd
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: curiosityGoldShimmer 7s ease-in-out infinite;
+}
+
+@keyframes curiosityGoldShimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+/* Buttons glow when hovered or focused */
+button,
+.button,
+.add-button,
+.quiet-button {
+  transition:
+    transform 180ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+button:hover,
+.button:hover,
+.add-button:hover {
+  box-shadow: 0 0 16px var(--gold-glow);
+}
+
+button:active,
+.button:active,
+.add-button:active {
+  transform: scale(0.97);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #e7bf68;
+  outline-offset: 3px;
+}
+
+/* Gold focus ring for text fields */
+input:focus,
+textarea:focus {
+  border-color: #c9a253;
+  box-shadow: 0 0 0 3px rgba(226, 181, 91, 0.12);
+}
+
+/* Subtle entrance animation for dashboard sections */
+@keyframes curiosityFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome,
+.stats-grid,
+.content-grid,
+.goals-panel {
+  animation: curiosityFadeUp 650ms ease both;
+}
+
+.stats-grid { animation-delay: 80ms; }
+.content-grid { animation-delay: 150ms; }
+.goals-panel { animation-delay: 220ms; }
+
+/* Make completed tasks feel smoother */
+.task-row.done .task-text {
+  transition: opacity 220ms ease, color 220ms ease;
+}
+
+/* Keep animations comfortable for everyone */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
