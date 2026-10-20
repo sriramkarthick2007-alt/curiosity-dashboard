@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11100d">
+  <title>Curiosity — Personal Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top" aria-label="Curiosity home"><span class="brand-mark">C</span><span class="brand-name">curiosity<span class="brand-dot">.</span><small>PERSONAL DASHBOARD</small></span></a>
+      <p class="side-label">YOUR WORKSPACE</p>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-item active" href="#overview"><span>⌂</span> Overview</a>
+        <a class="nav-item" href="#tasks"><span>✓</span> My tasks</a>
+        <a class="nav-item" href="#notes"><span>▤</span> Notes</a>
+        <a class="nav-item" href="#goals"><span>◎</span> Goals</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="quote-mark">“</div>
+        <p class="quote">Small steps every day add up to big changes.</p>
+        <span class="quote-credit">A REMINDER FOR YOU</span>
+      </div>
+    </aside>
+
+    <main class="main-content" id="top">
+      <header class="topbar">
+        <div class="breadcrumb">Curiosity <span>/</span> <strong id="todayLabel">Today</strong></div>
+        <button id="clearDataBtn" class="quiet-button" type="button" title="Remove saved tasks, notes and goals">Reset demo</button>
+      </header>
+
+      <section class="welcome" id="overview">
+        <div>
+          <p class="eyebrow" id="dateLine">YOUR PERSONAL SPACE</p>
+          <h1>Think boldly.<br><span>Make it happen.</span> <span class="wave">✦</span></h1>
+          <p class="welcome-subtitle">A clearer mind. A sharper focus. Your next big idea starts here.</p>
+        </div>
+        <div class="today-card">
+          <span class="today-icon">✦</span>
+          <div><small>YOUR FOCUS TODAY</small><strong id="focusSummary">One step at a time</strong></div>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Your progress">
+        <article class="stat-card">
+          <div class="stat-top"><span>Tasks completed</span><span class="stat-icon mint">✓</span></div>
+          <div class="stat-value"><strong id="completedCount">0</strong><span id="taskTotal">/ 0 tasks</span></div>
+          <div class="progress-track"><div id="taskProgress" class="progress-fill"></div></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Goals in progress</span><span class="stat-icon lilac">◎</span></div>
+          <div class="stat-value"><strong id="goalCount">0</strong><span>personal goals</span></div>
+          <p class="stat-caption">Keep moving forward</p>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Notes saved</span><span class="stat-icon peach">▤</span></div>
+          <div class="stat-value"><strong id="noteCount">0</strong><span>thoughts captured</span></div>
+          <p class="stat-caption">Your ideas, in one place</p>
+        </article>
+      </section>
+
+      <div class="content-grid">
+        <section class="panel tasks-panel" id="tasks">
+          <div class="panel-heading"><div><p class="eyebrow">STAY ON TRACK</p><h2>Today's tasks</h2></div><span class="panel-emoji">✦</span></div>
+          <form id="taskForm" class="inline-form">
+            <input id="taskInput" type="text" maxlength="120" placeholder="What do you want to get done?" aria-label="New task" required>
+            <button class="add-button" type="submit" aria-label="Add task">+</button>
+          </form>
+          <div class="task-filters" role="group" aria-label="Filter tasks">
+            <button class="filter active" data-filter="all" type="button">All</button>
+            <button class="filter" data-filter="active" type="button">To do</button>
+            <button class="filter" data-filter="completed" type="button">Completed</button>
+          </div>
+          <ul id="taskList" class="task-list"></ul>
+          <p id="emptyTasks" class="empty-state">Nothing here yet. Add your first task above 🌱</p>
+        </section>
+
+        <section class="panel notes-panel" id="notes">
+          <div class="panel-heading"><div><p class="eyebrow">CLEAR YOUR MIND</p><h2>Quick notes</h2></div><span class="panel-emoji">✎</span></div>
+          <form id="noteForm" class="note-form">
+            <input id="noteTitle" type="text" maxlength="80" placeholder="Note title" aria-label="Note title" required>
+            <textarea id="noteBody" rows="3" maxlength="1500" placeholder="Write down an idea, thought, or reminder..." aria-label="Note content" required></textarea>
+            <button class="button full-button" type="submit">Save note <span>↗</span></button>
+          </form>
+          <div id="notesList" class="notes-list"></div>
+          <p id="emptyNotes" class="empty-state">Your next great idea starts here.</p>
+        </section>
+      </div>
+
+      <section class="panel goals-panel" id="goals">
+        <div class="panel-heading goal-heading">
+          <div><p class="eyebrow">LOOK A LITTLE FURTHER</p><h2>Personal goals</h2><p class="panel-description">Big dreams become manageable when you write them down.</p></div>
+          <span class="goal-decoration">◎</span>
+        </div>
+        <form id="goalForm" class="goal-form">
+          <input id="goalInput" type="text" maxlength="120" placeholder="Add a goal (e.g. Read 12 books this year)" aria-label="New goal" required>
+          <button class="button" type="submit">Add goal <span>+</span></button>
+        </form>
+        <div id="goalsList" class="goals-list"></div>
+        <p id="emptyGoals" class="empty-state">What would you love to achieve? Add a goal to begin.</p>
+      </section>
+
+      <footer class="footer"><span>Curiosity <span class="footer-heart">✦</span> — made for your next big idea</span><span>Created by <strong class="creator-name">Sriram Karthick P</strong></span><span>Your data stays in this browser on this device.</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
